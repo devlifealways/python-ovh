@@ -11,7 +11,13 @@ that are also useful for external consumption.
 
 import cgi
 import codecs
-import collections
+
+# Set the right path to collections
+try:
+    import collections.abc as collections
+except ImportError:
+    import collections
+
 import io
 import os
 import platform

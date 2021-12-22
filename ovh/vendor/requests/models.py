@@ -7,9 +7,13 @@ requests.models
 This module contains the primary objects that power Requests.
 """
 
-import collections
-import datetime
+# Set the right path to collections
+try:
+    import collections.abc as collections
+except ImportError:
+    import collections
 
+import datetime
 from io import BytesIO, UnsupportedOperation
 from .hooks import default_hooks
 from .structures import CaseInsensitiveDict

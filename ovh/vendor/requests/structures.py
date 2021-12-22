@@ -8,7 +8,11 @@ Data structures that power Requests.
 
 """
 
-import collections
+# Set the right path to collections
+try:
+    import collections.abc as collections
+except ImportError:
+    import collections
 
 
 class CaseInsensitiveDict(collections.MutableMapping):

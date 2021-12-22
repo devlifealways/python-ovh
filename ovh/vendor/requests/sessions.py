@@ -9,7 +9,13 @@ requests (cookies, auth, proxies).
 
 """
 import os
-from collections import Mapping
+
+# Set the right path to collections
+try:
+    from collections.abc import Mapping
+except ImportError:
+    from collections import Mapping
+
 from datetime import datetime
 
 from .auth import _basic_auth_str

@@ -6,14 +6,21 @@ Compatibility code to be able to use `cookielib.CookieJar` with requests.
 requests.utils imports from here, so be careful with imports.
 """
 
+import calendar
 import copy
 import time
-import calendar
-import collections
-from .compat import cookielib, urlparse, urlunparse, Morsel
+
+from .compat import Morsel, cookielib, urlparse, urlunparse
+
+# Set the right path to collections
+try:
+    import collections.abc as collections
+except ImportError:
+    import collections
 
 try:
     import threading
+
     # grr, pyflakes: this fixes "redefinition of unused 'threading'"
     threading
 except ImportError:

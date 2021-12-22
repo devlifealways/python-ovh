@@ -1,8 +1,15 @@
 from __future__ import absolute_import
-from collections import Mapping, MutableMapping
+
+# Set the right path to collections
+try:
+    from collections.abc import Mapping, MutableMapping
+except ImportError:
+    from collections import Mapping, MutableMapping
+
 try:
     from threading import RLock
 except ImportError:  # Platform-specific: No threads available
+
     class RLock:
         def __enter__(self):
             pass
